@@ -1,0 +1,11 @@
+// This is where you import your scss partials.//
+
+@import "meyer-reset"; //eric meyer rest
+@import "bourbon/bourbon"; // or "bourbon" when in Rails
+@import "grid-settings"; // grid setup
+@import "neat/neat"; // or "neat" when in Rails
+$disable-warnings: false !default;
+
+@import "colors"; // color settings
+@import "layout"; // website structure
+@import "content"; // website content

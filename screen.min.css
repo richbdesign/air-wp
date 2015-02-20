@@ -1,0 +1,368 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+q:before, q:after {
+  content: "";
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* Neat 1.7.0
+ * http://neat.bourbon.io
+ * Copyright 2012-2014 thoughtbot, inc.
+ * MIT License */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+div.container {
+  max-width: 73.75em;
+  margin-left: auto;
+  margin-right: auto; }
+  div.container:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+div.header {
+  float: left;
+  display: block;
+  margin-right: 1.6949152542%;
+  width: 100%;
+  background: #eee; }
+  div.header:last-child {
+    margin-right: 0; }
+
+.header {
+  margin-bottom: 20px;
+  background: #eee;
+  text-align: center; }
+
+.mainnav {
+  background: rgba(255, 255, 255, 0.5); }
+  .mainnav:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+section {
+  max-width: 73.75em;
+  margin-left: auto;
+  margin-right: auto; }
+  section:after {
+    content: "";
+    display: table;
+    clear: both; }
+  section div {
+    margin-bottom: 20px;
+    background: #eee;
+    text-align: center; }
+    section div:nth-child(2n) {
+      margin-right: 0; }
+    section div:nth-child(2n+1) {
+      clear: left; }
+    @media screen and (max-width: 480px) {
+      section div {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section div:last-child {
+          margin-right: 0; } }
+  section .col-11 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 91.5254237288%; }
+    section .col-11:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-11 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-11:last-child {
+          margin-right: 0; } }
+  section .col-10 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 83.0508474576%; }
+    section .col-10:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-10 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-10:last-child {
+          margin-right: 0; } }
+  section .col-9 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 74.5762711864%; }
+    section .col-9:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-9 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-9:last-child {
+          margin-right: 0; } }
+  section .col-8 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 66.1016949153%; }
+    section .col-8:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-8 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-8:last-child {
+          margin-right: 0; } }
+  section .col-7 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 57.6271186441%; }
+    section .col-7:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-7 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-7:last-child {
+          margin-right: 0; } }
+  section .col-6 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 49.1525423729%; }
+    section .col-6:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 960px) {
+      section .col-6 {
+        float: left;
+        display: block;
+        margin-right: 2.0408163265%;
+        width: 48.9795918367%; }
+        section .col-6:last-child {
+          margin-right: 0; } }
+    @media screen and (max-width: 480px) {
+      section .col-6 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-6:last-child {
+          margin-right: 0; } }
+  section .col-5 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 40.6779661017%; }
+    section .col-5:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-5 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-5:last-child {
+          margin-right: 0; } }
+  section .col-4 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 32.2033898305%; }
+    section .col-4:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-4 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-4:last-child {
+          margin-right: 0; } }
+  section .col-3 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 23.7288135593%; }
+    section .col-3:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-3 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-3:last-child {
+          margin-right: 0; } }
+  section .col-2 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 15.2542372881%; }
+    section .col-2:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-2 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-2:last-child {
+          margin-right: 0; } }
+  section .col-1 {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 6.7796610169%; }
+    section .col-1:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .col-1 {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%; }
+        section .col-1:last-child {
+          margin-right: 0; } }
+  section .shifted {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 49.1525423729%;
+    margin-left: 25.4237288136%; }
+    section .shifted:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section .shifted {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%;
+        margin-left: 0%; }
+        section .shifted:last-child {
+          margin-right: 0; } }
+  section aside {
+    float: left;
+    display: block;
+    margin-right: 2.5641025641%;
+    width: 48.7179487179%;
+    background: #aaa;
+    height: 7em;
+    line-height: 7em; }
+    section aside:last-child {
+      margin-right: 0; }
+    @media screen and (max-width: 480px) {
+      section aside {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%;
+        margin-bottom: 2em; }
+        section aside:last-child {
+          margin-right: 0; } }
+
+.nested div {
+  min-height: 12em; }
+
+div.bigrow {
+  max-width: 73.75em;
+  margin-left: auto;
+  margin-right: auto; }
+  div.bigrow:after {
+    content: "";
+    display: table;
+    clear: both; }
+  div.bigrow ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  div.bigrow li {
+    float: left;
+    display: block;
+    margin-right: 1.6949152542%;
+    width: 23.7288135593%;
+    margin-bottom: 20px;
+    background: #eee;
+    text-align: center;
+    height: 8em;
+    line-height: 8em; }
+    div.bigrow li:last-child {
+      margin-right: 0; }
+    div.bigrow li:nth-child(4n) {
+      margin-right: 0; }
+    div.bigrow li:nth-child(4n+1) {
+      clear: left; }
+    @media screen and (max-width: 480px) {
+      div.bigrow li {
+        float: left;
+        display: block;
+        margin-right: 5.2631578947%;
+        width: 100%;
+        margin-left: 0%; }
+        div.bigrow li:last-child {
+          margin-right: 0; } }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+
+img {
+  max-width: 100%;
+  margin-bottom: 0.5em;
+  border: 1px solid #ccc;
+  margin-left: -1px;
+  margin-right: -1px;
+  display: block; }
+
+h1, p {
+  padding: 2em 0; }
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold; }

@@ -1,0 +1,183 @@
+.headerpic {
+	background: url(../images/header-home.jpg) no-repeat top center;
+	background-size: cover;
+}
+.home .headerpic {
+	background-position: top center;
+	background-size: 100%;
+}
+.page-template-page-leftmenu .headerpic, .blog .headerpic, .single .headerpic, .archive .headerpic {
+	padding-bottom: 30px;
+}
+header {
+	float: left;
+	width: 100%;
+	@include clearfix;
+}
+.mainnav {
+	clear: both;
+	background: rgb(256,256,256);
+	background: rgba(256,256,256,0.7);
+}
+.main {
+	background: $contentbg;
+	padding: 30px 0;
+}
+.content {
+	background: $white;
+	padding: 30px 0;
+}
+.content.bluecontent {
+	background: $contentbg;
+}
+.bottomcallouts {
+	background: $darkblue;
+}
+.changebanner {
+	margin: 200px auto 30px;
+}
+.pictures {
+	padding: 50px 0 30px;
+}
+.calloutcontainer {
+	background: $lightblue;
+	position: relative;
+	.transparentfixer {
+		padding: 0 !important;
+		margin: 0 !important;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: $darkblue;
+		height: 100%;
+	}
+	.thickest {
+		background: rgb(256,256,256);
+		background: rgba(256,256,256,0.8);
+		margin-right: 0 !important;
+		min-height: 122px;
+	}
+	.thicker {
+		background: rgb(256,256,256);
+		background: rgba(256,256,256,0.4);
+		padding-left: 1.6949152542%;
+		min-height: 122px;
+	}
+}
+.home .calloutcontainer {
+	background: rgb(256,256,256);
+	background: rgba(256,256,256,0.6);
+	.transparentfixer {
+		background: rgb(256,256,256);
+		background: rgba(256,256,256,0.8);
+	}
+}
+section {
+	@include outer-container;
+}
+.col-12 {
+	@include span-columns(12);
+}
+.offset-10 {
+	@include span-columns(10);
+	@include shift(1);
+}
+.col-11 {
+	@include span-columns(11);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-10 {
+	@include span-columns(10);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-9 {
+	@include span-columns(9);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-8 {
+	@include span-columns(8);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-7 {
+	@include span-columns(7);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-6 {
+	@include omega(2n);
+	@include span-columns(6);
+	@include media($smallscreen) {
+		@include span-columns(5);
+	}
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-5 {
+	@include span-columns(5);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-4 {
+	@include span-columns(4);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-3 {
+	@include span-columns(3);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-2 {
+	@include span-columns(2);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.col-1 {
+	@include span-columns(1);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}
+.shifted {
+	@include span-columns(6);
+	@include shift(3);
+	@include media($mobile) {
+		@include span-columns(4);
+		@include shift(0);
+	}
+}
+aside {
+	@include span-columns(4 of 8);
+	@include media($mobile) {
+		@include span-columns(4);
+		margin-bottom: 2em;
+	}
+}
+footer {
+	@include outer-container;
+	padding: 30px 0;
+	div {
+		margin-bottom: 20px;
+		@include omega(4n);
+		@include media($mobile) {
+			@include span-columns(4);
+		}
+	}
+	nav {
+		@include span-columns(12);
+	}
+}

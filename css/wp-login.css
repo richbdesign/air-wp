@@ -1,0 +1,9 @@
+body.login {
+	background-image:url(../images/custom/custom-login-bg.gif) !important;
+}
+h1 a {
+	background-image:url(../images/custom/custom-login-logo.png) !important;
+	height: 148px !important;
+	background-size: 274px 148px !important;
+	width: 274px !important;
+}
