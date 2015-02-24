@@ -43,7 +43,8 @@ if (!empty($pageheader)):
 					<div class="flightfield c6">Gate</div>
 				</div>
 				<?php
-					$arrurl = 'http://xml.flightview.com/fvXMLDemoConsis/fvxml.exe?a=fvxmldemoConse&b=thr324$sk94jh&arrap=lga&arrdate=20150218&arrhr=1200';
+					$day = date("Ymd");
+					$arrurl = 'http://xml.flightview.com/fvXMLDemoConsis/fvxml.exe?a=fvxmldemoConse&b=thr324$sk94jh&arrap=lga&arrdate='.$day.'&arrhr=1200';
 					$xml = file_get_contents($arrurl);
 					$feed = simplexml_load_string($xml);
 					echo '<div id="Data" class="arrivaldata">';
@@ -55,8 +56,38 @@ if (!empty($pageheader)):
 						$originstate = $arrival->Departure->Airport->AirportLocation->StateId;
 						$arrstatus = $arrival->Arrival->ArrivalScheduleStatus;
 						$arrtime = $arrival->Arrival->DateTime[1]->Time;
-						$arrscheduled = date('g:i a', strtotime($arrtime));
+						$tz = 'America/Chicago';
+						$timestamp = $arrtime;
+						$arrscheduled = new DateTime($timestamp, new DateTimeZone($tz));
 						$arrgate = $arrival->Arrival->Airport->Gate;
+						$arrstatus = $arrival->FlightStatus;
+						foreach ($arrstatus->children() as $child) {
+							if ($child->getName() == 'InGate') {
+								$arrrealstatus = 'In Gate';
+							} elseif ($child->getName() == 'Landed') {
+								$arrrealstatus = 'Landed';
+							} elseif ($child->getName() == 'Scheduled') {
+								$arrrealstatus = 'Scheduled';
+							} elseif ($child->getName() == 'Proposed') {
+								$arrrealstatus = 'Proposed';
+							} elseif ($child->getName() == 'InAir') {
+								$arrrealstatus = 'In Air';
+							} elseif ($child->getName() == 'Cancelled') {
+								$arrrealstatus = 'Cancelled';
+							} elseif ($child->getName() == 'NoTakeoffInfo') {
+								$arrrealstatus = 'No Takeoff Info';
+							} elseif ($child->getName() == 'Delayed') {
+								$arrrealstatus = 'Delayed';
+							} elseif ($child->getName() == 'Unknown') {
+								$arrrealstatus = 'Unknown';
+							} elseif ($child->getName() == 'Outage') {
+								$arrrealstatus = 'Outage';
+							} elseif ($child->getName() == 'Expected') {
+								$arrrealstatus = 'Expected';
+							} elseif ($child->getName() == 'PastFlight') {
+								$arrrealstatus = 'Past Flight';
+							}
+						}
 						$counter +=1;
 						if ($counter == 2) {
 							$counter = "0";
@@ -64,18 +95,7 @@ if (!empty($pageheader)):
 						} else {
 							echo '<div class="flight">';
 						}
-						echo '<div class="flightvalue c1">'.$airline.'</div><div class="flightvalue c2">'.$flnum.'</div><div class="flightvalue c3">'.$origincity.', '.$originstate.'</div>';
-						if ($arrstatus == 'AO') {
-						    echo '<div class="flightvalue c4">On-Time</div>';
-						} elseif ($arrstatus == 'AE') {
-						    echo '<div class="flightvalue c4">Early</div>';
-						} elseif ($arrstatus == 'AD') {
-						    echo '<div class="flightvalue c4">Delayed</div>';
-						} else {
-						    echo '<div class="flightvalue c4">On-Time</div>';
-						}
-						//echo '<div class="flightvalue c4">'.$arrstatus.'</div>';
-						echo '<div class="flightvalue c5">'.$arrscheduled.'</div><div class="flightvalue c6">'.$arrgate.'</div></div>';
+						echo '<div class="flightvalue c1">'.$airline.'</div><div class="flightvalue c2">'.$flnum.'</div><div class="flightvalue c3">'.$origincity.', '.$originstate.'</div><div class="flightvalue c4">'.$arrrealstatus.'</div><div class="flightvalue c5">'.$arrscheduled->format('g:i a').'</div><div class="flightvalue c6">'.$arrgate.'</div></div>';
 					}
 					echo '</div>';
 				?>
@@ -88,9 +108,10 @@ if (!empty($pageheader)):
 					<div class="flightfield c3">To</div>
 					<div class="flightfield c4">Status</div>
 					<div class="flightfield c5">Scheduled</div>
+					<div class="flightfield c6">Gate</div>
 				</div>
 				<?php
-					$depurl = 'http://xml.flightview.com/fvXMLDemoConsis/fvxml.exe?a=fvxmldemoConse&b=thr324$sk94jh&depap=lga&depdate=20150219&dephr=0000';
+					$depurl = 'http://xml.flightview.com/fvXMLDemoConsis/fvxml.exe?a=fvxmldemoConse&b=thr324$sk94jh&depap=lga&depdate='.$day.'&dephr=0000';
 					$dxml = file_get_contents($depurl);
 					$dfeed = simplexml_load_string($dxml);
 					echo '<div id="Data" class="arrivaldata">';
@@ -102,9 +123,38 @@ if (!empty($pageheader)):
 						$doriginstate = $dep->Arrival->Airport->AirportLocation->StateId;
 						$depstatus = $dep->Departure->DepartureScheduleStatus;
 						$deptime = $dep->Departure->DateTime[1]->Time;
-						$depscheduled = date('g:i a', strtotime($deptime));
-						$depgate = $dep->Arrival->Airport->Gate;
+						$dtz = 'America/Chicago';
+						$dtimestamp = $deptime;
+						$depscheduled = new DateTime($dtimestamp, new DateTimeZone($dtz));
+						$depgate = $dep->Departure->Airport->Gate;
 						$dstatus = $dep->FlightStatus;
+						foreach ($dstatus->children() as $child) {
+							if ($child->getName() == 'InGate') {
+								$realstatus = 'In Gate';
+							} elseif ($child->getName() == 'Landed') {
+								$realstatus = 'Landed';
+							} elseif ($child->getName() == 'Scheduled') {
+								$realstatus = 'Scheduled';
+							} elseif ($child->getName() == 'Proposed') {
+								$realstatus = 'Proposed';
+							} elseif ($child->getName() == 'InAir') {
+								$realstatus = 'In Air';
+							} elseif ($child->getName() == 'Cancelled') {
+								$realstatus = 'Cancelled';
+							} elseif ($child->getName() == 'NoTakeoffInfo') {
+								$realstatus = 'No Takeoff Info';
+							} elseif ($child->getName() == 'Delayed') {
+								$realstatus = 'Delayed';
+							} elseif ($child->getName() == 'Unknown') {
+								$realstatus = 'Unknown';
+							} elseif ($child->getName() == 'Outage') {
+								$realstatus = 'Outage';
+							} elseif ($child->getName() == 'Expected') {
+								$realstatus = 'Expected';
+							} elseif ($child->getName() == 'PastFlight') {
+								$realstatus = 'Past Flight';
+							}
+						}
 						$counter +=1;
 						if ($counter == 2) {
 							$counter = "0";
@@ -112,18 +162,7 @@ if (!empty($pageheader)):
 						} else {
 							echo '<div class="flight">';
 						}
-						echo '<div class="flightvalue c1">'.$dairline.'</div><div class="flightvalue c2">'.$dflnum.'</div><div class="flightvalue c3">'.$dorigincity.', '.$doriginstate.'</div>';
-						if ($depstatus == 'DO') {
-						    echo '<div class="flightvalue c4">On-Time</div>';
-						} elseif ($depstatus == 'DE') {
-						    echo '<div class="flightvalue c4">Early</div>';
-						} elseif ($depstatus == 'DD') {
-						    echo '<div class="flightvalue c4">Delayed</div>';
-						} else {
-						    echo '<div class="flightvalue c4">On-Time</div>';
-						}
-						//echo '<div class="flightvalue c4">'.$depstatus.'</div>';
-						echo '<div class="flightvalue c5">'.$depscheduled.'</div>'.$dstatus.'</div>';
+						echo '<div class="flightvalue c1">'.$dairline.'</div><div class="flightvalue c2">'.$dflnum.'</div><div class="flightvalue c3">'.$dorigincity.', '.$doriginstate.'</div><div class="flightvalue c4">'.$realstatus.'</div><div class="flightvalue c5">'.$depscheduled->format('g:i a').'</div><div class="flightvalue c6">'.$depgate.'</div></div>';
 					}
 					echo '</div>';
 				?>

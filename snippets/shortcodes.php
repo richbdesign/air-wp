@@ -87,4 +87,43 @@ function waa_list_pages_shortcode( $atts ) {
     return $listvariable;
 }
 
+// faq query
+add_shortcode( 'list-faq', 'waa_list_faq_shortcode' );
+function waa_list_faq_shortcode( $atts ) {
+    ob_start();
+    
+    // define attributes and their defaults
+    extract( shortcode_atts( array (
+        'posttype' => 'faq',
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'posts' => -1,
+        'section' => '',
+    ), $atts ) );
+ 
+    // define query parameters based on attributes
+    $options = array(
+        'post_type' => $posttype,
+        'order' => $order,
+        'orderby' => $orderby,
+        'posts_per_page' => $posts,
+        'section' => $section,
+    );
+    echo '<dl class="accordion" id="'.$section.'">';
+    $query = new WP_Query( $options );
+    // run the loop based on the query
+    while ($query->have_posts()) : $query->the_post(); ?>
+    
+    <dt><a href=""><?php the_title(); ?></a></dt>
+    <dd><?php the_content(); ?></dd>
+    
+    <?php endwhile;
+
+    wp_reset_query();
+    echo '</dl>';
+
+    $listvariable = ob_get_clean();
+    return $listvariable;
+ }
+
 ?>

@@ -55,10 +55,16 @@ h1, h2, h3, h4, h5 {
 	color: $darkblue;
 }
 h1 {
-
+	font-size: em(34);
 }
 h2 {
-	font-size: 2.625em;
+	font-size: rem(28);
+}
+h3 {
+	font-size: rem(22);
+}
+h4 {
+	font-size: rem(18);
 }
 sup, sub {
 	font-size: 75%;
@@ -86,6 +92,16 @@ a:hover, a:focus {
 }
 strong {
 	font-weight: 700;
+}
+ul {
+	margin: 0 0 15px 30px;
+	li {
+		list-style: disc;
+		line-height: 1.75em;
+		ul {
+			margin-bottom: 0;
+		}
+	}
 }
 .logo {
 	float: left;
@@ -307,6 +323,7 @@ ul.bjqs {
 	li.bjqs-slide {
 		position:absolute;
 		display:none;
+		list-style: none;
 	}
 }
 ul.bjqs-controls {
@@ -317,6 +334,7 @@ ul.bjqs-controls {
 }
 ul.bjqs-controls.v-centered {
 	 li {
+	 	list-style: none;
 		a, a:visited {
 			position:absolute;
 			display: block;
@@ -528,6 +546,7 @@ ul.tabs {
 			padding: 0;
 			list-style: none;
 			border-top: 1px solid $white;
+			line-height: 1em;
 			a, a:visited {
 				color: $white;
 				display: block;
@@ -566,6 +585,8 @@ ul.tabs {
 			margin: 0 0 3px 0;
 			padding: 0 0 3px 0;
 			font-size: em(14);
+			list-style-type: none;
+			line-height: 1em;
 		}
 		ul {
 			border-top: 1px solid $gray;
@@ -596,7 +617,7 @@ article.post {
 	padding-bottom: 0;
 }
 ul.pagination { display: block; height: 24px; margin-left: -5px; margin-bottom: 10px; }
-ul.pagination li { float: left; display: block; height: 24px; color: $bodycolor; font-size: 15px; margin-left: 5px; }
+ul.pagination li { float: left; display: block; height: 24px; color: $bodycolor; font-size: 15px; margin-left: 5px; list-style: none; line-height: 1em; }
 ul.pagination li a { display: block; padding: 6px 7px 4px; color: #999; }
 ul.pagination li.current a, ul.pagination li:hover a, ul.pagination li a:focus { border-bottom: solid 2px $darkblue; color: $bodycolor; text-decoration: none; }
 ul.pagination li.unavailable a { cursor: default; color: $bodycolor; }
@@ -640,6 +661,9 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 		}
 	}
 	.content {
+		h2 {
+			font-size: rem(38);
+		}
 		h2, p {
 			padding: 0 60px;
 		}
@@ -653,6 +677,8 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 				float: left;
 				margin: 0 2% 0 0;
 				width: 32%;
+				list-style: none;
+				line-height: 1em;
 				img {
 					float: left;
 					margin-right: 20px;
@@ -703,6 +729,7 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 					list-style: none;
 					border-bottom: 1px solid $bodycolor;
 					font-size: em(14);
+					line-height: 1em;
 					span {
 						font-weight: 700;
 						width: 90px;
@@ -717,6 +744,27 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 			}
 		}
 	}
+}
+.page-template-page-airlines .vendor {
+	background: $white;
+}
+.page-template-page-airlines .vendor .vendorcontent {
+	background: #e8eef2;
+	.dinertop {
+		@include clearfix;
+		h3 {
+			float: left;
+		}
+		span {
+			float: right;
+			font-size: em(20);
+			line-height: 1em;
+		}
+	}
+}
+.page-template-page-airlines .vendor .vendorcontent .dinercontent ul li p {
+	margin: 0;
+	display: inline;
 }
 .garage {
 	background: #e8eef2;
@@ -741,6 +789,7 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 				list-style: none;
 				border-bottom: 1px solid $bodycolor;
 				font-size: em(14);
+				line-height: 1em;
 				span {
 					font-weight: 700;
 					width: 90px;
@@ -816,6 +865,183 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	}
 	.c6 {
 		width: 15%;
+	}
+}
+ul.tabber {
+	margin: 0;
+	padding: 0;
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: inline-block;
+		a, a:visited {
+			padding: 12px 15px 8px;
+			margin-right: 12px;
+			display: block;
+		}
+		a:hover, a:focus, a.active {
+			background: $lightgray;
+			color: $darkblue;
+		}
+	}
+}
+dl {
+	margin: 0 0 30px 0;
+	padding: 20px 20px 5px;
+	background: $lightgray;
+	dt {
+		margin: 0 0 12px 0;
+		padding: 0 0 9px 0;
+		border-bottom: 1px solid $gray;
+	}
+	dd {
+		background: $white;
+		padding: 15px 20px 1px;
+		margin: 0 0 15px 0;
+		font-size: rem(14);
+		p {
+			margin: 0 0 10px 0;
+		}
+		ul {
+			margin: 0 0 10px 30px;
+			li {
+				list-style: disc;
+				line-height: 1.75em;
+			}
+		}
+	}
+}
+.page-id-39 .content h4 {
+	background: $lightgray;
+	padding: 12px 10px 7px;
+}
+.fsearch {
+	float: left;
+	width: 30%;
+	background: $lightblue;
+	color: #fff;
+	@include padding(20px 20px 10px);
+	@include margin(0 2% 20px 0);
+	#{$all-text-inputs} {
+		border: 1px solid $gray;
+		background: $white;
+		-webkit-appearance: none;
+		@include border-top-radius(0);
+		@include border-bottom-radius(0);
+		display: block;
+		width: 100%;
+		@include margin(0 0 12px 0);
+        @include padding(11px 15px 10px);
+        font-size: rem(16);
+        color: $darkblue;
+	}
+	input[type=radio] {
+	    display: none;
+	    @include margin(10px);
+	}
+	input[type=radio] + label {
+	    display:inline-block;
+	    @include padding(7px 12px 4px);
+	    @include margin(0 0 12px 0);
+	    background-color: $lightblue;
+	    cursor: pointer;
+	}
+	input[type=radio]:checked + label {
+		background-image: none;
+	    background-color: $darkblue;
+	}
+	select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include margin(0 0 12px 0);
+        width: 100%;
+        @include padding(10px 0);
+        height: 40px;
+        border-color: $gray;
+        opacity: 0;
+        -webkit-appearance: none;
+    }
+    label.selector {
+        position: relative;
+        display: block;
+        @include margin(0 0 12px 0);
+        @include padding(13px 15px 10px);
+        width: 100%;
+        color: $darkblue;
+        background: $white;
+        border: 1px solid $gray;
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            pointer-events: none;
+        }
+        &:before {
+            right: 0;
+            width: 49px;
+            height: 100%;
+        }
+        &:after {
+            top: 16px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 8px solid $darkblue;
+        }
+    }
+    input[type="submit"] {
+    	-webkit-appearance: none;
+		background: $darkblue;
+		border: 1px solid $darkblue;
+		border-radius: 0;
+		color: $white;
+		cursor: pointer;
+		font-size: rem(16);
+		line-height: 1em;
+		@include margin(0 0 8px 0);
+        @include padding(13px 25px 12px);
+        -webkit-transition: all .1s linear; 
+		-moz-transition: all .1s linear; 
+		-o-transition: all .1s linear; 
+		transition: all .1s linear;
+    }
+    input[type="submit"]:hover, input[type="submit"]:focus {
+    	background: $white;
+    	color: $darkblue;
+    }
+}
+.fresults {
+	float: left;
+	width: 68%;
+	@include clearfix;
+	.flinfobox {
+		@include margin(0 0 20px 0);
+		background: #e8eef2;
+		.flinfoheader {
+			background: #bfd0db;
+			@include padding(16px 25px 10px);
+			h4 {
+				margin: 0;
+				font-size: rem(20);
+				line-height: 1em;
+			}
+		}
+		.flinfobody {
+			@include padding(15px 25px);
+			p {
+				margin: 0;
+				span {
+					font-weight: 700;
+					width: 160px;
+					display: inline-block;
+				}
+			}
+		}
 	}
 }
 footer {

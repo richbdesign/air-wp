@@ -270,4 +270,64 @@ function promos_post() {
 }
 add_action( 'init', 'promos_post' );
 
+// faq custom post type
+function faq_post() {
+	$labels = array(
+		'name'               => _x( 'FAQ', 'post type general name' ),
+		'singular_name'      => _x( 'FAQ', 'post type singular name' ),
+		'add_new'            => _x( 'Add New', 'faq' ),
+		'add_new_item'       => __( 'Add New FAQ' ),
+		'edit_item'          => __( 'Edit FAQ' ),
+		'new_item'           => __( 'New FAQ' ),
+		'all_items'          => __( 'All FAQs' ),
+		'view_item'          => __( 'View FAQ' ),
+		'search_items'       => __( 'Search FAQs' ),
+		'not_found'          => __( 'No faqs found' ),
+		'not_found_in_trash' => __( 'No faqs found in the Trash' ), 
+		'parent_item_colon'  => '',
+		'menu_name'          => 'FAQs'
+	);
+	$args = array(
+		'labels'        => $labels,
+		'description'   => 'FAQs',
+		'public'        => true,
+		'menu_position' => 5,
+		//'menu_icon' => '/wp-content/themes/flywichita/images/custom/faq.png',
+		'supports'      => array( 'title', 'editor', 'thumbnail' ),
+		'has_archive'   => true,
+	);
+	register_post_type( 'faq', $args );	
+}
+add_action( 'init', 'faq_post' );
+
+// hook into the init action and call create_gt_taxonomies() when it fires
+add_action( 'init', 'create_faq_taxonomies', 0 );
+
+// create one taxonomy, sections for the post type "faq"
+function create_faq_taxonomies() {
+
+	// Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name' => _x( 'Sections', 'taxonomy general name' ),
+		'singular_name' => _x( 'Section', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Search Sections' ),
+		'all_items' => __( 'All Sections' ),
+		'parent_item' => __( 'Parent Section' ),
+		'parent_item_colon' => __( 'Parent Section:' ),
+		'edit_item' => __( 'Edit Section' ),
+		'update_item' => __( 'Update Section' ),
+		'add_new_item' => __( 'Add New Section' ),
+		'new_item_name' => __( 'New Section' ),
+	); 	
+
+	register_taxonomy( 'section', array( 'faq' ), array(
+		'hierarchical' => true,
+		'labels' => $labels, /* NOTICE: Here is where the $labels variable is used */
+		'show_ui' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'sections' ),
+	));
+	
+};
+
 ?>

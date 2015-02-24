@@ -115,7 +115,7 @@ get_template_part( 'menu', 'index' ); //the  menu + logo/site title ?>
 		<div class="col-3">
 			<div class="inner">
 				<h4>Flight View</h4>
-				<a href="#" title="Fly with one of our many airline partners.">
+				<a href="http://flightaware.com/live/airport/KICT" title="Fly with one of our many airline partners." target="_blank">
 					<span>Fly with one of our many airline partners.</span>
 					<?php include("images/circlearrow.svg"); ?>
 				</a>
@@ -124,7 +124,7 @@ get_template_part( 'menu', 'index' ); //the  menu + logo/site title ?>
 		<div class="col-3">
 			<div class="inner lastinner">
 				<h4>Fight Guide</h4>
-				<a href="#" title="Track a flight.">
+				<a href="http://aus.fltmaps.com/en" title="Track a flight." target="_blank">
 					<span>Track a flight.</span>
 					<?php include("images/circlearrow.svg"); ?>
 				</a>

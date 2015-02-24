@@ -34,6 +34,7 @@
         'edit.php?post_type=parking-garages',
         'edit.php?post_type=restaurants',
         'edit.php?post_type=shops',
+        'edit.php?post_type=faq',
     );
    }
    add_filter('custom_menu_order', 'Wps_custom_menu_order');
