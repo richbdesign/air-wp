@@ -73,12 +73,12 @@ get_template_part( 'menu', 'index' ); //the  menu + logo/site title ?>
 <div class="main">
 	<section>
 		<div class="col-12">
-			<div id="promoslider">
-				<ul class="bjqs">
+			<div id="promoslider" class="flexslider">
+				<ul class="slides">
 
 				<?php wp_reset_query(); ?>
 				<?php
-				$promoposts = new WP_Query(array('post_type' => 'promos', 'posts_per_page' => 3, 'orderby' => 'rand'));
+				$promoposts = new WP_Query(array('post_type' => 'promos', 'posts_per_page' => 3, 'orderby' => 'date'));
 				while ($promoposts->have_posts()) : $promoposts->the_post();
 				?>
 							
@@ -89,13 +89,27 @@ get_template_part( 'menu', 'index' ); //the  menu + logo/site title ?>
 
 				</ul>
 			</div>
+			<div class="promotitles">
+				<ul class="slidenav">
+					
+					<?php
+					$imagetitles = new WP_Query(array('post_type' => 'promos', 'posts_per_page' => 3, 'orderby' => 'date'));
+					while ($imagetitles->have_posts()) : $imagetitles->the_post();
+					?>
+
+					<li><?php the_title(); ?></li>
+
+					<?php endwhile; // end of imagethumbs loop. ?>
+
+				</ul>
+			</div>
 		</div>
 	</section>
 </div><!-- main -->
 <div class="bottomcallouts">
 	<section>
 		<div class="col-3">
-			<div class="inner">
+			<div class="inner firstinner">
 				<h4>News</h4>
 				<a href="/news" title="Catch up on the latest at ICT.">
 					<span>Catch up on the latest at ICT.</span>

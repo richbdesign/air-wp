@@ -19,30 +19,34 @@ if (!empty($pageheader)):
 <?php endif; ?>
 <div class="content">
 	<section>
-		<?php wp_reset_query(); ?>
-        <?php
-        $garages = new WP_Query(array('post_type' => 'parking-garages', 'posts_per_page' => -1));
-        while ($garages->have_posts()) : $garages->the_post();
-        ?>
+		<div class="col-12">
+			<?php the_content(); ?>
 
-        <div class="col-6">
-        	<div class="garage">
-				<div class="garagetop">
-					<h3><?php the_title(); ?></h3>
-				</div>
-				<div class="garagecontent">
-					<?php the_content(); ?>
-					<ul>
-						<li><span>Hours</span> <?php the_field('parking_lot_hours'); ?></li>
-						<li><span>Rates</span> <?php the_field('parking_lot_rates'); ?></li>
-						<li><span>Payment</span> <?php the_field('parking_lot_payment'); ?></li>
-					</ul>
-				</div>
-			</div>
-        </div>
+			<?php wp_reset_query(); ?>
+	        <?php
+	        $garages = new WP_Query(array('post_type' => 'parking-garages', 'posts_per_page' => -1));
+	        while ($garages->have_posts()) : $garages->the_post();
+	        ?>
 
-        <?php endwhile; // end of garages loop. ?>
-		<?php wp_reset_query(); ?>
+	        <div class="col-6">
+	        	<div class="garage">
+					<div class="garagetop">
+						<h3><?php the_title(); ?></h3>
+					</div>
+					<div class="garagecontent">
+						<?php the_content(); ?>
+						<ul>
+							<li><span class="title">Hours</span> <span><?php the_field('parking_lot_hours'); ?></span></li>
+							<li><span class="title">Rates</span> <span><?php the_field('parking_lot_rates'); ?></span></li>
+							<li><span class="title">Payment</span> <span><?php the_field('parking_lot_payment'); ?></span></li>
+						</ul>
+					</div>
+				</div>
+	        </div>
+
+	        <?php endwhile; // end of garages loop. ?>
+			<?php wp_reset_query(); ?>
+		</div>
 	</section>
 </div><!-- content -->
 

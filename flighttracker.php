@@ -72,15 +72,22 @@ foreach ($feed->Flight as $arrival) {
 	}
 }
 
+if (!isset($depcity)) { 
+	echo '<div class="fresults">';
+	echo '<h3>No flights found</h3>';
+	echo '<p class="noresults">We are sorry, but we are unable to find any flights you requested. Please check to see if your airline code and flight number are correct.</p>';
+	echo '</div>';
+} else {
+
 echo '<div class="fresults">';
 echo '<h2>'.$airline.' Flight #'.$flnum.'</h2>';
-echo '<div class="flinfobox"><div class="flinfoheader">';
+echo '<div class="flinfobox leftbox"><div class="flinfoheader">';
 echo '<h4>Departure</h4></div>';
 echo '<div class="flinfobody"><p><span>Airport:</span> '.$depcity.', '.$depstate.'</p>';
 echo '<p><span>Scheduled Time:</span> '.$depscheduled->format('g:i a').'</p>';
 echo '<p><span>Actual Time:</span> '.$depactual->format('g:i a').'</p>';
 echo '<p><span>Gate:</span> '.$depgate.'</p></div></div>';
-echo '<div class="flinfobox"><div class="flinfoheader">';
+echo '<div class="flinfobox rightbox"><div class="flinfoheader">';
 echo '<h4>Arrival</h4></div>';
 echo '<div class="flinfobody"><p><span>Airport:</span> '.$arrcity.', '.$arrstate.'</p>';
 echo '<p><span>Scheduled Time:</span> '.$arrcheduled->format('g:i a').'</p>';
@@ -88,9 +95,7 @@ echo '<p><span>Actual Time:</span> '.$arractual->format('g:i a').'</p>';
 echo '<p><span>Status:</span> '.$arrrealstatus.'</p></div></div>';
 echo '</div>';
 
-} else {
-	echo '<div class="fresults">';
-	echo '<p class="noresults">Track a flight using the form to the left</p>';
-	echo '</div>';
+}
+
 }
 ?>

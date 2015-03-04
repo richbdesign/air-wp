@@ -4,6 +4,9 @@
  */
 ?>
 
+<nav class="mobilenav">
+	This is the mobile nav box.
+</nav>
 <div class="headerpic">
 <header>
 	<a href="<?php echo home_url();?>" title="<?php echo get_bloginfo('name');?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="<?php echo get_bloginfo('name');?>" class="logo retina"/></a>
@@ -14,6 +17,7 @@
 			<?php echo my_search_form(); ?>
 		</div>
 	</nav>
+	<a href="#" class="mobilemenu collapse"><span></span></a>
 </header><!-- header -->
 <nav class="mainnav">
 	<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>

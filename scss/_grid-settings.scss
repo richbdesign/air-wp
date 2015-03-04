@@ -7,6 +7,7 @@ $grid-columns: 12;
 $max-width: em(1180);
 
 // Define your breakpoints
+$widescreen: new-breakpoint(max-width 1180px 12);
 $smallscreen: new-breakpoint(max-width 960px 10);
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(max-width 796px 8);
+$mobile: new-breakpoint(max-width 768px 4);

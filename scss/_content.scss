@@ -93,6 +93,9 @@ a:hover, a:focus {
 strong {
 	font-weight: 700;
 }
+em {
+	font-style: italic;
+}
 ul {
 	margin: 0 0 15px 30px;
 	li {
@@ -103,13 +106,109 @@ ul {
 		}
 	}
 }
+.mobilenav {
+	width: 100%;
+	position: absolute;
+	left: -100%;
+	top: 0;
+	height: 100%;
+	background: #777;
+	display: none;
+	z-index: 999;
+	@include media($tablet) {
+		display: block;
+	}
+}
+.mobilemenu {
+	position: absolute;
+	width: 35px;
+	height: 30px;
+	top: 20px;
+	right: 20px;
+	z-index: 9999;
+}
+.mobilemenu span {
+	@include margin(0 auto);
+	position: relative;
+	top: 12px;
+}
+.mobilemenu span:before, .mobilemenu span:after {
+	position: absolute;
+	content: '';
+}
+.mobilemenu span, .mobilemenu span:before, .mobilemenu span:after {
+	width: 35px;
+	height: 6px;
+	background-color: $darkblue;
+	display: block;
+	border-radius: 4px;
+}
+.mobilemenu span:before {
+	@include margin(-12px 0 0 0);
+}
+.mobilemenu span:after {
+	@include margin(12px 0 0 0);
+}
+.collapse span {
+	transition-duration: 0s;
+	transition-delay: .2s;
+	-webkit-transition-duration: 0s;
+	-webkit-transition-delay: .2s;
+}
+.collapse.open span {
+	background-color: rgba(256,256,256,0.0);
+	transition-delay: .2s;
+	-webkit-transition-delay: .2s;
+}
+.collapse span:before {
+	transition-property: margin, transform;
+	transition-duration: .2s;
+	transition-delay: .2s, 0;
+	-webkit-transition-property: margin, transform;
+	-webkit-transition-duration: .2s;
+	-webkit-transition-delay: .2s, 0;
+}
+.collapse.open span:before {
+	margin-top: 0;
+	transform: rotate(45deg);
+	transition-delay: 0, .2s;
+	-webkit-transform: rotate(45deg);
+	-webkit-transition-delay: 0, .2s;
+}
+.collapse span:after {
+	transition-property: margin, transform;
+	transition-duration: .2s;
+	transition-delay: .2s, 0;
+	-webkit-transition-property: margin, transform;
+	-webkit-transition-duration: .2s;
+	-webkit-transition-delay: .2s, 0;
+}
+.collapse.open span:after {
+	margin-top: 0;
+	transform: rotate(-45deg);
+	transition-delay: 0, .2s;
+	-webkit-transform: rotate(-45deg);
+	-webkit-transition-delay: 0, .2s;
+}
 .logo {
 	float: left;
 	margin: 20px 0 20px 100px;
+	@include media($smallscreen) {
+		margin-left: 20px;
+	}
+	@include media($tablet) {
+		margin-left: 20px;
+	}
 }
 .topnav {
 	float: right;
 	margin: 20px 100px 20px 0;
+	@include media($smallscreen) {
+		margin-right: 20px;
+	}
+	@include media($tablet) {
+		margin-right: 20px;
+	}
 	ul {
 		margin: 0;
 		padding: 0;
@@ -181,10 +280,23 @@ ul {
 			display: inline;
 			font-size: em(20);
 			line-height: 1em;
+			@include media($widescreen) {
+				margin: 0 10px;
+			}
+			@include media($smallscreen) {
+				margin: 0;
+				font-size: em(18);
+			}
+			@include media($tablet) {
+				font-size: em(16);
+			}
 			a, a:visited {
 				padding: 20px 20px 15px;
 				color: $darkblue;
 				display: inline-block;
+				@include media($tablet) {
+					padding: 20px 10px 15px;
+				}
 			}
 			a:hover, a:focus {
 				color: $lightblue;
@@ -204,6 +316,9 @@ ul {
 		color: $white;
 		font-size: em(80);
 		line-height: 1em;
+		@include media($smallscreen) {
+			font-size: em(60);
+		}
 	}
 	a, a:visited {
 		color: $white;
@@ -221,6 +336,19 @@ ul {
 	}
 	.offset-10 {
 		min-height: 446px;
+		@include media($widescreen) {
+			min-height: 412px;
+		}
+		@include media($smallscreen) {
+			min-height: 382px;
+		}
+		@include media($tablet) {
+			min-height: 237px;
+		}
+		@include media($mobile) {
+			/*min-height: 180px;*/
+			min-height: 0;
+		}
 	}
 	.closebtn {
 		fill: $white;
@@ -234,10 +362,21 @@ ul {
 		-moz-transition: all .1s linear; 
 		-o-transition: all .1s linear; 
 		transition: all .1s linear;
+		@include media($widescreen) {
+			right: 20px;
+		}
+		@include media($mobile) {
+			top: -39px;
+		}
 	}
 	.closebtn:hover {
 		opacity: 1.0;
 		cursor: pointer;
+	}
+}
+#carousel {
+	@include media($tablet) {
+		display: none;
 	}
 }
 .callouts {
@@ -254,10 +393,17 @@ ul {
 		}
 		p.temp {
 			font-size: em(70);
+			@include media($tablet) {
+				font-size: em(60);
+			}
 			line-height: 1em;
 			margin-top: 5px;
 			span {
 				font-size: 75%;
+				@include media($tablet) {
+					font-size: 65%;
+					top: -0.35em;
+				}
 				line-height: 0;
 				top: -0.25em;
 				position: relative;
@@ -358,19 +504,31 @@ ul.bjqs-controls.v-centered {
 		background-size: 40px 40px;
 	}
 } 
-ol.bjqs-markers {
+ol.bjqs-markers, ul.slidenav {
 	list-style: none; 
 	padding: 0; 
 	margin: 5px 0 0; 
 	width:100%;
 	float: left;
+	@include media($tablet) {
+		display: none;
+	}
 	li {
 		display: inline-block;
 		float: left;
-		width: 33.05%;
+		width: 33.09%;
 		margin: 0;
-		padding: 0;
+		padding: 10px 0;
 		font-size: em(14);
+		background: $white;
+		color: $lightblue;
+		text-align: center;
+		@include media($widescreen) {
+			width: 33%;
+		}
+		@include media($smallscreen) {
+			width: 33%;
+		}
 		a, a:visited {
 			display: inline-block;
 			width: 100%;
@@ -386,7 +544,12 @@ ol.bjqs-markers {
 	li:nth-child(2) {
 		margin: 0 4px;
 	}
-	li.active-marker a {
+	li.active-marker a, li.flex-active {
+		background: $lightblue;
+		color: $white;
+	}
+	li:hover {
+		cursor: pointer;
 		background: $lightblue;
 		color: $white;
 	}
@@ -398,11 +561,22 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 .bottomcallouts {
 	section {
 		border-right: 1px solid #ccc;
+		@include media($widescreen) {
+			border-right: 0;
+		}
 	}
 	.inner {
 		border-left: 1px solid #ccc;
 		padding-left: 20px;
 		min-height: 195px;
+		@include media($tablet) {
+			padding: 0 20px;
+		}
+		@include media($mobile) {
+			border-left: 0;
+			border-bottom: 1px solid #ccc;
+			min-height: 0;
+		}
 	}
 	h4 {
 		color: $white;
@@ -410,6 +584,12 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 		margin: 0;
 		padding: 50px 0;
 		text-align: center;
+		@include media($smallscreen) {
+			padding: 36px 0;
+		}
+		@include media($mobile) {
+			padding: 25px 0 10px;
+		}
 	}
 	a, a:visited {
 		display: block;
@@ -417,9 +597,24 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 		padding-bottom: 10px;
 		width: 100%;
 		float: left;
+		@include media($mobile) {
+			float: none;
+			padding-bottom: 25px;
+		}
 		span {
 			width: 54%;
+			@include media($widescreen) {
+				width: 75%;
+			}
+			@include media($smallscreen) {
+				width: 100%;
+				text-align: center;
+			}
 			float: left;
+			@include media($mobile) {
+				float: none;
+				display: block;
+			}
 		}
 	}
 	a:hover, a:focus {
@@ -434,6 +629,9 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 		-moz-transition: all .1s linear; 
 		-o-transition: all .1s linear; 
 		transition: all .1s linear;
+		@include media($smallscreen) {
+			display: none;
+		}
 	}
 	a:hover .circlearrow, a:focus .circlearrow {
 		fill: $white;
@@ -441,11 +639,19 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 	.lastinner .circlearrow {
 		margin-right: 23px;
 	}
+	.firstinner {
+		@include media($widescreen) {
+			border-left: 0;
+		}
+	}
 }
 .landing {
 	background: url(../images/fpo-landingbg.jpg) no-repeat center center;
 	background-size: cover;
 	padding: 100px 0;
+	@include media($smallscreen) {
+		padding: 50px 0;
+	}
 	ul {
 		margin: 0;
 		padding: 0;
@@ -458,6 +664,12 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 			float: left;
 			width: 25%;
 			height: 225px;
+			@include media($smallscreen) {
+				height: 175px;
+			}
+			@include media($mobile) {
+				width: 50%;
+			}
 			a, a:visited {
 				color: $white;
 				text-align: center;
@@ -469,6 +681,9 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 				height: 100%;
 				div {
 					@include vertical-align;
+				}
+				@include media($smallscreen) {
+					font-size: em(28);
 				}
 			}
 			a:hover, a:focus {
@@ -482,14 +697,28 @@ p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bot
 		.link-0, .link-1, .link-2, .link-4, .link-5, .link-6 {
 			border-right: 1px solid $white;
 		}
+		@include media($mobile) {
+			.link-1, .link-5 {
+				border-right: 0;
+			}
+			.link-4, .link-5 {
+				border-bottom: 1px solid $white;
+			}
+		}
 	}
 }
 .banner {
 	background-size: cover;
 	min-height: 275px;
+	@include media($mobile) { 
+		min-height: 150px;
+	}
 	.col-12 {
 		position: relative;
 		min-height: 275px;
+		@include media($mobile) { 
+			min-height: 150px;
+		}
 	}
 }
 .content {
@@ -508,6 +737,9 @@ ul.tabs {
 	bottom: 0;
 	left: 0;
 	float: left;
+	@include media($widescreen) {
+		left: 20px;
+	}
 	li {
 		margin: 0 5px 0 0;
 		padding: 0;
@@ -571,6 +803,9 @@ ul.tabs {
 }
 .bordered {
 	border-right: 2px solid $gray;
+	@include media($mobile) {
+		border-right: 0;
+	}
 }
 .Annual_Archive_Widget {
 	h3 {
@@ -600,7 +835,7 @@ ul.tabs {
 	font-size: em(20);
 	margin-bottom: 25px;
 }
-article.post {
+article.post, .search-results article.page {
 	border-bottom: 2px solid $gray;
 	margin: 0 30px 30px 0;
 	padding-bottom: 10px;
@@ -626,6 +861,12 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	.banner {
 		.directionform {
 			margin: 150px 0 0 60px;
+			@include media($widescreen) {
+				margin-left: 20px;
+			}
+			@include media($mobile) {
+				margin: 30px 0 20px 20px;
+			}
 			input {
 				display: block;
 				background: $white;
@@ -637,6 +878,12 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 				min-width: 520px;
 				font-family: $pillgothic;
 				font-weight: 400;
+				@include media($mobile) {
+					min-width: 0;
+					width: 265px;
+					font-size: em(16);
+					padding: 18px 15px 15px;
+				}
 			}
 			input::-webkit-input-placeholder {
 				color: $darkblue;
@@ -666,19 +913,28 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 		}
 		h2, p {
 			padding: 0 60px;
+			@include media($widescreen) {
+				padding: 0;
+			}
 		}
 		ul {
 			margin: 0 0 50px 0;
-			padding: 0 60px 10px;
+			padding: 0 60px 40px;
 			border-bottom: 1px solid $darkblue;
 			float: left;
 			width: 100%;
+			@include media($widescreen) {
+				padding: 0 0 40px;
+			}
 			li {
 				float: left;
 				margin: 0 2% 0 0;
 				width: 32%;
 				list-style: none;
 				line-height: 1em;
+				@include media($mobile) {
+					width: 100%;
+				}
 				img {
 					float: left;
 					margin-right: 20px;
@@ -690,6 +946,9 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 			}
 			li.last {
 				margin: 0 0 15px 0;
+				@include media($mobile) {
+					margin: 0 0 2% 0;
+				}
 			}
 		}
 	}
@@ -702,13 +961,27 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	.vendorimage {
 		float: left;
 		width: 335px;
+		@include media($widescreen) {
+			width: 32%;
+		}
+		@include media($mobile) {
+			width: 100%;
+		}
 		img {
 			margin: 0;
+			width: 100%;
+			height: auto;
 		}
 	}
 	.vendorcontent {
 		float: left;
 		width: 845px;
+		@include media($widescreen) {
+			width: 68%;
+		}
+		@include media($mobile) {
+			width: 100%;
+		}
 		.dinertop {
 			background: #bfd0db;
 			padding: 16px 25px 10px;
@@ -791,9 +1064,22 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 				font-size: em(14);
 				line-height: 1em;
 				span {
-					font-weight: 700;
-					width: 90px;
+					font-weight: 400;
+					width: 400px;
 					display: inline-block;
+					margin-left: 20px;
+					vertical-align: top;
+					@include media($widescreen) {
+						margin-left: 0;
+						width: 100%;
+					}
+				}
+				span.title {
+					font-weight: 700;
+					width: 65px;
+					@include media($widescreen) {
+						width: 100%;
+					}
 				}
 			}
 			li:last-child {
@@ -810,6 +1096,9 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	float: left;
 	width: 100%;
 	border-bottom: 1px solid $gray;
+	@include media($mobile) { 
+		display: none;
+	}
 	.flightfield {
 		float: left;
 		padding: 12px 10px 10px 10px;
@@ -840,6 +1129,9 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	.flight {
 		width: 100%;
 		float: left;
+		@include media($mobile) { 
+			background: $white;
+		}
 	}
 	.even {
 		background: $white;
@@ -847,24 +1139,57 @@ ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus { bor
 	.flightvalue {
 		float: left;
 		padding: 12px 10px 10px 10px;
+		span {
+			font-weight: 700;
+			width: 100px;
+			display: none;
+			@include media($mobile) { 
+				display: inline-block;
+			}
+		}
 	}
 	.c1 {
 		width: 20%;
+		@include media($mobile) { 
+			width: 100%;
+			background: $darkblue;
+			color: $white;
+		}
 	}
 	.c2 {
 		width: 10%;
+		@include media($mobile) { 
+			width: 100%;
+			border-bottom: 1px solid $darkblue;
+		}
 	}
 	.c3 {
 		width: 20%;
+		@include media($mobile) { 
+			width: 100%;
+			border-bottom: 1px solid $darkblue;
+		}
 	}
 	.c4 {
 		width: 20%;
+		@include media($mobile) { 
+			width: 100%;
+			border-bottom: 1px solid $darkblue;
+		}
 	}
 	.c5 {
 		width: 15%;
+		@include media($mobile) { 
+			width: 100%;
+			border-bottom: 1px solid $darkblue;
+		}
 	}
 	.c6 {
 		width: 15%;
+		@include media($mobile) { 
+			width: 100%;
+			border-bottom: 1px solid $darkblue;
+		}
 	}
 }
 ul.tabber {
@@ -879,6 +1204,9 @@ ul.tabber {
 			padding: 12px 15px 8px;
 			margin-right: 12px;
 			display: block;
+			@include media($tablet) { 
+				margin-right: 0;
+			}
 		}
 		a:hover, a:focus, a.active {
 			background: $lightgray;
@@ -918,11 +1246,11 @@ dl {
 }
 .fsearch {
 	float: left;
-	width: 30%;
+	width: 100%;
 	background: $lightblue;
 	color: #fff;
 	@include padding(20px 20px 10px);
-	@include margin(0 2% 20px 0);
+	@include margin(0 0 40px 0);
 	#{$all-text-inputs} {
 		border: 1px solid $gray;
 		background: $white;
@@ -930,11 +1258,14 @@ dl {
 		@include border-top-radius(0);
 		@include border-bottom-radius(0);
 		display: block;
-		width: 100%;
-		@include margin(0 0 12px 0);
+		width: 49%;
+		@include margin(0 0 12px 2%);
         @include padding(11px 15px 10px);
         font-size: rem(16);
         color: $darkblue;
+	}
+	input[type=text] {
+		@include margin(-53px 0 12px 51%);
 	}
 	input[type=radio] {
 	    display: none;
@@ -946,10 +1277,21 @@ dl {
 	    @include margin(0 0 12px 0);
 	    background-color: $lightblue;
 	    cursor: pointer;
+	    -webkit-transition: all .1s linear; 
+		-moz-transition: all .1s linear; 
+		-o-transition: all .1s linear; 
+		transition: all .1s linear;
 	}
 	input[type=radio]:checked + label {
 		background-image: none;
 	    background-color: $darkblue;
+	}
+	input[type=radio] + label:hover {
+		background-image: none;
+	    color: $darkblue;
+	}
+	input[type=radio]:checked + label:hover {
+	    color: $white;
 	}
 	select {
         position: absolute;
@@ -968,7 +1310,7 @@ dl {
         display: block;
         @include margin(0 0 12px 0);
         @include padding(13px 15px 10px);
-        width: 100%;
+        width: 49%;
         color: $darkblue;
         background: $white;
         border: 1px solid $gray;
@@ -1017,10 +1359,11 @@ dl {
 }
 .fresults {
 	float: left;
-	width: 68%;
+	width: 100%;
 	@include clearfix;
 	.flinfobox {
-		@include margin(0 0 20px 0);
+		width: 49%;
+		float: left;
 		background: #e8eef2;
 		.flinfoheader {
 			background: #bfd0db;
@@ -1043,6 +1386,12 @@ dl {
 			}
 		}
 	}
+	.flinfobox.leftbox {
+		@include margin(0 1% 10px 0);
+	}
+	.flinfobox.rightbox {
+		@include margin(0 0 10px 1%);
+	} 
 }
 footer {
 	div {
@@ -1053,9 +1402,33 @@ footer {
 			font-weight: 700;
 			font-size: em(18);
 		}
+		@include media($mobile) {
+			text-align: center;
+		}
+	}
+	.col-9 {
+		@include media($widescreen) {
+			padding-left: 20px;
+		}
+		@include media($mobile) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+	}
+	.col-3 {
+		@include media($tablet) { 
+			padding-right: 20px;
+		}
+		@include media($mobile) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 	}
 }
 .footernav {
+	@include media($mobile) {
+		display: none;
+	}
 	ul {
 		margin: 0;
 		padding: 0;
@@ -1066,8 +1439,15 @@ footer {
 			list-style: none;
 			display: inline-block;
 			border-right: 2px solid $lightblue;
-			font-size: em(20);
+			font-size: em(16);
 			line-height: 1em;
+			@include media(1000px) { 
+				font-size: em(20);
+			}
+			@include media($tablet) { 
+				font-size: em(14);
+				padding: 3px 5px 0 3px;
+			}
 			a, a:visited {
 				color: $lightblue;
 			}
@@ -1079,5 +1459,34 @@ footer {
 			padding-right: 0;
 			border-right: 0;
 		}
+	}
+}
+@include media($mobile) {
+	.blog .col-2, .single-post .col-2, .archive .col-2 {
+		display: none;
+	}
+	.openNav .mobilenav {
+	    left: 0;
+	    -webkit-transform: translate3d(0, 0, 0);
+	    -moz-transform: translate3d(0, 0, 0);
+	    -ms-transform: translate3d(0, 0, 0);
+	    -o-transform: translate3d(0, 0, 0);
+	    transform: translate3d(0, 0, 0);
+	    -webkit-transition: -webkit-transform 500ms ease;
+	    -moz-transition: -moz-transform 500ms ease;
+	    -o-transition: -o-transform 500ms ease;
+	    transition: transform 500ms ease;
+	}
+	.mobilenav {
+	    left: 0;
+	    -webkit-transform: translate3d(-100%, 0, 0);
+	    -moz-transform: translate3d(-100%, 0, 0);
+	    -ms-transform: translate3d(-100%, 0, 0);
+	    -o-transform: translate3d(-100%, 0, 0);
+	    transform: translate3d(-100%, 0, 0);
+	    -webkit-transition: -webkit-transform 500ms ease;
+	    -moz-transition: -moz-transform 500ms ease;
+	    -o-transition: -o-transform 500ms ease;
+	    transition: transform 500ms ease;
 	}
 }

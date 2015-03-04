@@ -3,11 +3,12 @@ jQuery.noConflict();
 (function($) {
 $(document).ready(function () {
 
-	var fixer = $('.callouts').css('margin-left');
+	//var fixer = $('.callouts').css('margin-left');
+	var fixer = $('.callouts').offset().left;
     $(".transparentfixer").width(fixer);
 
     $(window).resize(function() {
-        var fixer = $('.callouts').css('margin-left');
+        var fixer = $('.callouts').offset().left;
         $(".transparentfixer").width(fixer);
     });
 
@@ -70,16 +71,16 @@ $(document).ready(function () {
 	});
 
 	//promo slider
-	$('#promoslider').bjqs({
-		'animtype' : 'slide',
-		'height' : 339,
-		'width' : 982,
-		'animspeed'	: 9000,
-		'responsive' : true
-	});
+	//$('#promoslider').bjqs({
+		//'animtype' : 'slide',
+		//'height' : 339,
+		//'width' : 982,
+		//'animspeed'	: 9000,
+		//'responsive' : true
+	//});
 
 	//promo slider fix
-	$( "ol.bjqs-markers li:first-child" ).addClass( "active-marker" );
+	//$( "ol.bjqs-markers li:first-child" ).addClass( "active-marker" );
 
 	//flexslider
 	function flexsliderStart() {
@@ -101,6 +102,13 @@ $(document).ready(function () {
 		    sync: "#carousel"
 	  	});
 	}
+
+	$('#promoslider').flexslider({
+	    animation: "slide",
+	    manualControls: ".promotitles li",
+	    animationLoop: false,
+	    slideshow: false,
+  	});
 
 	//simple accordian
 	var allPanels = $('.accordion > dd').hide();
@@ -159,6 +167,26 @@ $(document).ready(function () {
 			$(this).find(':selected').html()
 		);
 	});
+
+	//smooth scroller
+	//$('a[href*=#]:not([href=#])').click(function() {
+	    //if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	      //var target = $(this.hash);
+	      //target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      //if (target.length) {
+	        //$('html,body').animate({
+	          //scrollTop: target.offset().top
+	        //}, 1000);
+	        //return false;
+	      //}
+	    //}
+	  //});
+
+	//menu
+	$('.mobilemenu').click(function(){
+	  $(this).toggleClass('open');
+	  $('html').toggleClass('openNav');
+	})
 
 });
 })(jQuery);

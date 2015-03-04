@@ -5,19 +5,42 @@
 .home .headerpic {
 	background-position: top center;
 	background-size: 100%;
+	@include media($smallscreen) {
+		background-size: auto;
+	}
 }
 .page-template-page-leftmenu .headerpic, .blog .headerpic, .single .headerpic, .archive .headerpic {
 	padding-bottom: 30px;
+	@include media($mobile) {
+		min-height: 150px;
+	}
 }
 header {
 	float: left;
 	width: 100%;
 	@include clearfix;
+	@include media($mobile) {
+		float: none;
+	}
+}
+.topnav {
+	@include media($mobile) {
+		display: none;
+	}
+}
+.mobilemenu {
+	display: none;
+	@include media($mobile) {
+		display: block;
+	}
 }
 .mainnav {
 	clear: both;
 	background: rgb(256,256,256);
 	background: rgba(256,256,256,0.7);
+	@include media($mobile) {
+		display: none;
+	}
 }
 .main {
 	background: $contentbg;
@@ -27,6 +50,11 @@ header {
 	background: $white;
 	padding: 30px 0;
 }
+.callouts .col-2 {
+	@include media($mobile) {
+		display: none;
+	}
+}
 .content.bluecontent {
 	background: $contentbg;
 }
@@ -34,7 +62,15 @@ header {
 	background: $darkblue;
 }
 .changebanner {
-	margin: 200px auto 30px;
+	/*margin: 200px auto 30px;*/
+	margin: 11% auto 30px;
+	@include media($widescreen) {
+		padding: 0 20px;
+		margin: 8% auto 30px;
+	}
+	@include media($smallscreen) {
+		margin: 30px auto;
+	}
 }
 .pictures {
 	padding: 50px 0 30px;
@@ -74,6 +110,11 @@ header {
 }
 section {
 	@include outer-container;
+}
+.content section {
+	@include media($widescreen) {
+		padding: 0 20px;
+	}
 }
 .col-12 {
 	@include span-columns(12);

@@ -95,7 +95,7 @@ if (!empty($pageheader)):
 						} else {
 							echo '<div class="flight">';
 						}
-						echo '<div class="flightvalue c1">'.$airline.'</div><div class="flightvalue c2">'.$flnum.'</div><div class="flightvalue c3">'.$origincity.', '.$originstate.'</div><div class="flightvalue c4">'.$arrrealstatus.'</div><div class="flightvalue c5">'.$arrscheduled->format('g:i a').'</div><div class="flightvalue c6">'.$arrgate.'</div></div>';
+						echo '<div class="flightvalue c1">'.$airline.'</div><div class="flightvalue c2"><span>Flight</span>'.$flnum.'</div><div class="flightvalue c3"><span>Origin</span>'.$origincity.', '.$originstate.'</div><div class="flightvalue c4"><span>Status</span>'.$arrrealstatus.'</div><div class="flightvalue c5"><span>Schedule</span>'.$arrscheduled->format('g:i a').'</div><div class="flightvalue c6"><span>Gate</span>'.$arrgate.'</div></div>';
 					}
 					echo '</div>';
 				?>
@@ -162,7 +162,7 @@ if (!empty($pageheader)):
 						} else {
 							echo '<div class="flight">';
 						}
-						echo '<div class="flightvalue c1">'.$dairline.'</div><div class="flightvalue c2">'.$dflnum.'</div><div class="flightvalue c3">'.$dorigincity.', '.$doriginstate.'</div><div class="flightvalue c4">'.$realstatus.'</div><div class="flightvalue c5">'.$depscheduled->format('g:i a').'</div><div class="flightvalue c6">'.$depgate.'</div></div>';
+						echo '<div class="flightvalue c1">'.$dairline.'</div><div class="flightvalue c2"><span>Flight</span>'.$dflnum.'</div><div class="flightvalue c3"><span>Origin</span>'.$dorigincity.', '.$doriginstate.'</div><div class="flightvalue c4"><span>Status</span>'.$realstatus.'</div><div class="flightvalue c5"><span>Scheduled</span>'.$depscheduled->format('g:i a').'</div><div class="flightvalue c6"><span>Gate</span>'.$depgate.'</div></div>';
 					}
 					echo '</div>';
 				?>
